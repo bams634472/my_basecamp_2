@@ -16,21 +16,63 @@ Database: Structured with SQLite (development) to handle relational data integri
 
 ## Installation
 To get this project running locally, follow these steps:
-Clone the repository:
-Bash
-git clone <git@git.us.qwasar.io:my_basecamp_1_206352_crkt8z/my_basecamp_1.git>
-cd MyBasecamp1
-Install dependencies:
-Bash
-bundle install
-Setup the database:
-Bash
-bin/rails db:prepare
 
-## Usage
-To start the local development server:
-Bash
+1. Clone the repository:
+
+   ```bash
+git clone <git@git.us.qwasar.io:my_basecamp_1_206352_crkt8z/my_basecamp_1.git>
+cd my_basecamp_1
+```
+
+2. Install dependencies:
+
+   ```bash
+bundle install
+```
+
+3. Create and migrate the database and seed sample data:
+
+   ```bash
+bin/rails db:setup
+bin/rails db:seed
+```
+
+4. Start the Rails server:
+
+   ```bash
 bin/rails server
+```
+
+5. Open in browser: http://localhost:3000
+
+## MyBaseCamp2 Features
+- User authentication and authorization (`User`, `Session`).
+- Project management with membership + admin roles.
+- Attachments for projects (file upload + delete). 
+- Threaded discussions inside a project (`ProjectThread`).
+- Messaging within threads (`Message`), edit/delete permissions for authors/admin.
+
+## Deployment
+This Rails app is compatible with Heroku/Render/AWS.
+
+1. Set environment variables for production secrets.
+2. Run migrations:
+
+```bash
+bin/rails db:migrate
+bin/rails db:seed
+```
+
+3. Deploy through your provider.
+
+## Live URL
+- Deployed app URL (example placeholder): `https://mybasecamp2.example.com`
+
+## Default users (seeded)
+- admin@example.com / password
+- member@example.com / password
+
+
 
 ### The Core Team
 Abednego Bulus (bulus_a)

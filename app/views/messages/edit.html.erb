@@ -1,0 +1,6 @@
+<h1>Edit Message</h1>
+<%= form_with model: [@project_thread, @message], local: true do |f| %>
+  <div><%= f.text_area :body, required: true %></div>
+  <div><%= f.submit "Update Message" %></div>
+<% end %>
+<%= link_to "Back", project_project_thread_path(@project_thread.project, @project_thread) %>

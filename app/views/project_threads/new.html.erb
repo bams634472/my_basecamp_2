@@ -1,0 +1,7 @@
+<h1>New Thread for <%= @project.title %></h1>
+<%= form_with model: [@project, @thread], local: true do |f| %>
+  <div><%= f.label :title %><br><%= f.text_field :title, required: true %></div>
+  <div><%= f.label :body %><br><%= f.text_area :body %></div>
+  <div><%= f.submit "Create Thread" %></div>
+<% end %>
+<%= link_to "Back", project_path(@project) %>

@@ -1,0 +1,29 @@
+<h1><%= @thread.title %></h1>
+<p><%= @thread.body %></p>
+<p>Started by <%= @thread.user.name %></p>
+
+<% if current_user.admin_of?(@thread.project) %>
+  <%= link_to "Edit Thread", edit_project_project_thread_path(@thread.project, @thread) %> |
+  <%= link_to "Delete Thread", project_project_thread_path(@thread.project, @thread), method: :delete, data: { confirm: "Delete thread?" } %>
+<% end %>
+
+<h2>Messages</h2>
+<%= form_with model: [@thread, @new_message], local: true do |f| %>
+  <div><%= f.text_area :body, placeholder: "Post a message" %></div>
+  <div><%= f.submit "Post Message" %></div>
+<% end %>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <p><strong><%= message.user.name %>:</strong> <%= message.body %></p>
+      <small><%= message.created_at.strftime("%F %T") %></small>
+      <% if message.user == current_user || current_user.admin_of?(@thread.project) %>
+        <%= link_to "Edit", edit_project_project_thread_message_path(@thread.project, @thread, message) %> |
+        <%= link_to "Delete", project_project_thread_message_path(@thread.project, @thread, message), method: :delete, data: { confirm: "Delete message?" } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to project", project_path(@thread.project) %>

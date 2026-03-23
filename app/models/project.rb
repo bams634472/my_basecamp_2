@@ -1,0 +1,9 @@
+class Project < ApplicationRecord
+  belongs_to :owner, class_name: "User"
+  has_many :project_memberships, dependent: :destroy
+  has_many :users, through: :project_memberships
+  has_many :attachments, dependent: :destroy
+  has_many :project_threads, dependent: :destroy
+
+  validates :title, presence: true
+end

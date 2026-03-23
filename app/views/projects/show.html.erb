@@ -1,0 +1,38 @@
+<h1><%= @project.title %></h1>
+<p><%= @project.description %></p>
+<p>Owner: <%= @project.owner.name %></p>
+<p>Members: <%= @project.users.map(&:name).join(', ') %></p>
+
+<% if current_user.admin_of?(@project) %>
+  <p><%= link_to "Edit Project", edit_project_path(@project) %> | <%= link_to "Delete Project", project_path(@project), method: :delete, data: { confirm: "Delete?" } %></p>
+<% end %>
+
+<h2>Attachments</h2>
+<%= form_with model: [@project, @attachment], local: true do |f| %>
+  <div><%= f.file_field :file, required: true %> <%= f.submit "Upload" %></div>
+<% end %>
+
+<ul>
+  <% @attachments.each do |attachment| %>
+    <li>
+      <%= attachment.file_icon %>
+      <%= link_to attachment.filename, url_for(attachment.file), target: "_blank" %> (<%= attachment.file_extension %>)
+      uploaded by <%= attachment.user.name %>
+      <% if attachment.user == current_user || current_user.admin_of?(@project) %>
+        <%= link_to "Delete", project_attachment_path(@project, attachment), method: :delete, data: { confirm: "Delete attachment?" } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Threads</h2>
+<% if current_user.admin_of?(@project) %>
+  <%= link_to "New Thread", new_project_project_thread_path(@project) %>
+<% end %>
+<ul>
+  <% @project_threads.each do |thread| %>
+    <li><%= link_to thread.title, project_project_thread_path(@project, thread) %> by <%= thread.user.name %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Back to Projects", projects_path %></p>

@@ -1,4 +1,4 @@
-# Welcome to My Basecamp 1
+# Welcome to My Basecamp 2
 This project is to recreate the core DNA of Basecamp, the legendary project management tool. 
 
 ## Task
@@ -17,33 +17,37 @@ Database: Structured with SQLite (development) to handle relational data integri
 ## Installation
 To get this project running locally, follow these steps:
 
-1. Clone the repository:
-
-   ```bash
-git clone <git@git.us.qwasar.io:my_basecamp_1_206352_crkt8z/my_basecamp_1.git>
-cd my_basecamp_1
-```
-
-2. Install dependencies:
+1. Install dependencies:
 
    ```bash
 bundle install
 ```
 
-3. Create and migrate the database and seed sample data:
+2. Create and migrate the database and seed sample data:
 
    ```bash
 bin/rails db:setup
 bin/rails db:seed
 ```
 
-4. Start the Rails server:
+3. Start the Rails server:
 
    ```bash
 bin/rails server
 ```
 
-5. Open in browser: http://localhost:3000
+4. Open in browser: http://localhost:3000
+
+## Troubleshooting
+If you encounter errors during setup, here are common issues and fixes:
+
+- **Gemfile not found**: Ensure `Gemfile` exists in the project root. If missing, create it with standard Rails gems.
+- **SQLite3 version mismatch**: Update `Gemfile` to `gem 'sqlite3', '~> 2.9'` for Windows compatibility.
+- **Rails version error (Unknown version "7.2")**: Change `config.load_defaults 7.2` to `config.load_defaults 7.1` in `config/application.rb`.
+- **TZInfo data not found**: Add `gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]` to `Gemfile` and run `bundle install`.
+- **Bcrypt not installed**: Add `gem 'bcrypt', '~> 3.1.7'` to `Gemfile` for password hashing.
+- **PWA manifest errors**: Comment out PWA routes in `config/routes.rb` and remove `<link rel="manifest" href="/manifest.json">` from `app/views/layouts/application.html.erb`.
+- **Signup not working**: Ensure database is seeded with `bin/rails db:seed`. Check form for validation errors (e.g., unique email, matching passwords).
 
 ## MyBaseCamp2 Features
 - User authentication and authorization (`User`, `Session`).
@@ -68,9 +72,6 @@ bin/rails db:seed
 ## Live URL
 - Deployed app URL (example placeholder): `https://mybasecamp2.example.com`
 
-## Default users (seeded)
-- admin@example.com / password
-- member@example.com / password
 
 
 

@@ -3420,3 +3420,47 @@ Processing by ProjectsController#new as HTML
 Completed 200 OK in 308ms (Views: 221.4ms | ActiveRecord: 0.3ms | Allocations: 5565)
 
 
+Started GET "/" for ::1 at 2026-04-01 12:28:58 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in 'ApplicationController#current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "project_memberships" ON "projects"."id" = "project_memberships"."project_id" WHERE "project_memberships"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/projects/index.html.erb:4:in '_app_views_projects_index_html_erb__487799658_9800'
+  Rendered projects/index.html.erb within layouts/application (Duration: 148.9ms | Allocations: 5348)
+  Rendered layout layouts/application.html.erb (Duration: 2197.5ms | Allocations: 15978)
+Completed 200 OK in 4694ms (Views: 2491.1ms | ActiveRecord: 22.4ms | Allocations: 41824)
+
+
+Started GET "/" for ::1 at 2026-04-01 13:37:22 +0100
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (40.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in 'ApplicationController#current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "project_memberships" ON "projects"."id" = "project_memberships"."project_id" WHERE "project_memberships"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/projects/index.html.erb:4:in '_app_views_projects_index_html_erb__487799658_9800'
+  Rendered projects/index.html.erb within layouts/application (Duration: 36.7ms | Allocations: 608)
+  Rendered layout layouts/application.html.erb (Duration: 289.0ms | Allocations: 1526)
+Completed 200 OK in 430ms (Views: 296.4ms | ActiveRecord: 61.8ms | Allocations: 2534)
+
+
+Started GET "/" for ::1 at 2026-04-02 11:04:24 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 195ms (ActiveRecord: 0.0ms | Allocations: 1337)
+
+
+Started GET "/login" for ::1 at 2026-04-02 11:04:26 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 672.6ms | Allocations: 4532)
+  Rendered layout layouts/application.html.erb (Duration: 1302.8ms | Allocations: 13738)
+Completed 200 OK in 2368ms (Views: 1698.9ms | ActiveRecord: 0.0ms | Allocations: 17264)
+
+

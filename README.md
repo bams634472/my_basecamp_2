@@ -73,9 +73,22 @@ bin/rails db:seed
 - Deployed app URL (example placeholder): `https://mybasecamp2.example.com`
 
 
+## commit history
+
+Date:   Wed Apr 1 12:31:48 2026 +0100        
+
+    updating sqlite3
+
+Date:   Wed Apr 1 12:13:09 2026 +0100
+
+    installation of Ruby
+
+Date:   Mon Mar 23 17:43:51 2026 +0100
+
+    my_basecamp2
+
 
 
 ### The Core Team
-Abednego Bulus (bulus_a)
 <span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
 <span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px' /></span>
